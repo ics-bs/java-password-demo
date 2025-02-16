@@ -13,6 +13,7 @@ bin/
 .settings
 .classpath
 .project
+*.properties
 test/resources/projects/**/.vscode
 test/resources/projects/maven/salut/testGradle
 test-temp

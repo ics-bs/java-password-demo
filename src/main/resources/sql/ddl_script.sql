@@ -24,8 +24,8 @@ CREATE TABLE AppUser
 
 INSERT INTO AppUser (Username, UserPassword) 
 VALUES 
-    ('mary.sue', 'Autumn#567'),    -- Shared password with Phoebe Winters
-    ('gary.stu', 'Spring@2024'),   -- Unique password
-    ('phoebe.winters', 'Autumn#567'), -- Shared password with Mary Sue
-    ('sam.rodgers', 'Winter$890'), -- Unique password
-    ('david.brown', 'Summer!123'); -- Unique password
+    ('mary.sue', 'Cloudy#Morn22'), 
+    ('gary.stu', 'Spring@202420242024'), 
+    ('phoebe.winters', 'Cloudy#Morn22'), 
+    ('sam.rodgers', 'Skyline!Run#77Run#66'), 
+    ('david.brown', 'Ultra!Complex#Password123');
