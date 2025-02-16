@@ -1,8 +1,8 @@
 CREATE TABLE AppUser
 (
-    AppUserID INT IDENTITY(1,1),
-    Username NVARCHAR(50) NOT NULL,
-    UserPassword NVARCHAR(MAX) NOT NULL,
+    AppUserID       INTEGER IDENTITY(1,1),
+    Username        NVARCHAR(50)    NOT NULL,
+    UserPassword    NVARCHAR(MAX)   NOT NULL,
 
     CONSTRAINT PK_AppUser_UserID PRIMARY KEY (UserID),
     CONSTRAINT UQ_AppUser_Username UNIQUE (Username),

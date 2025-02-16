@@ -2,10 +2,10 @@ DROP TABLE IF EXISTS AppUser;
 
 CREATE TABLE AppUser (
     AppUserID       INT IDENTITY(1,1),
-    Username        NVARCHAR(50) NOT NULL,
-    PasswordHash    VARBINARY(64) NOT NULL,
-    Salt            NVARCHAR(128) NOT NULL,
-    Iterations      INTEGER NOT NULL,
+    Username        NVARCHAR(50)    NOT NULL,
+    PasswordHash    VARBINARY(64)   NOT NULL,
+    Salt            NVARCHAR(128)   NOT NULL,
+    Iterations      INTEGER         NOT NULL,
 
     CONSTRAINT PK_AppUser_UserID PRIMARY KEY (AppUserID),
     CONSTRAINT UQ_AppUser_Username UNIQUE (Username),

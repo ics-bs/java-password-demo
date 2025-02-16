@@ -34,7 +34,7 @@ public class UserDao {
         String sqlQuery = "SELECT PasswordHash, Salt, Iterations FROM AppUser WHERE Username = ?";
 
         try (Connection connection = connectionHandler.getConnection();
-             PreparedStatement statement = connection.prepareStatement(sqlQuery)) {
+                PreparedStatement statement = connection.prepareStatement(sqlQuery)) {
 
             statement.setString(1, username);
             ResultSet resultSet = statement.executeQuery();
