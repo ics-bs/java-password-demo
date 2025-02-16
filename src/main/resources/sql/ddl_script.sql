@@ -1,6 +1,6 @@
 CREATE TABLE AppUser
 (
-    UserID INT IDENTITY(1,1),
+    AppUserID INT IDENTITY(1,1),
     Username NVARCHAR(50) NOT NULL,
     UserPassword NVARCHAR(MAX) NOT NULL,
 
