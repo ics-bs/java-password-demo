@@ -19,14 +19,19 @@ public class UserDao {
     }
 
     /**
-     * Authenticates a user by checking the provided password against the database.
+     * Authenticates a user by verifying the provided password against the database.
+     *
+     * The password is hashed using SHA-256 with a unique, per-user salt
+     * retrieved from the database. The computed hash is then compared
+     * to the stored hash for authentication.
      *
      * @param username The username to look up.
-     * @param password The provided password (plaintext in this example).
-     * @return true if the password matches, false otherwise.
+     * @param password The provided password (plaintext input from the user).
+     * @return true if the salted and hashed password matches the stored hash, false
+     *         otherwise.
      */
     public boolean authenticate(String username, String password) {
-        String sqlQuery = "SELECT PasswordHash FROM AppUser WHERE Username = ?";
+        String sqlQuery = "SELECT PasswordHash, Salt FROM AppUser WHERE Username = ?";
 
         try (Connection connection = connectionHandler.getConnection();
                 PreparedStatement statement = connection.prepareStatement(sqlQuery)) {
@@ -37,10 +42,12 @@ public class UserDao {
             // Check if user exists and compare hashed passwords
             if (resultSet.next()) {
                 byte[] storedHash = resultSet.getBytes("PasswordHash");
+                String salt = resultSet.getString("Salt");
 
-                // Hash the input password using SHA-256
+                // Hash the input password with the retrieved salt
+                String saltedPassword = password + salt;
                 MessageDigest digest = MessageDigest.getInstance("SHA-256");
-                byte[] computedHash = digest.digest(password.getBytes(StandardCharsets.UTF_8));
+                byte[] computedHash = digest.digest(saltedPassword.getBytes(StandardCharsets.UTF_8));
 
                 // Compare computed hash with the stored hash
                 return Arrays.equals(storedHash, computedHash);
@@ -58,4 +65,5 @@ public class UserDao {
             throw new DaoException("Internal error: contact the system administrator", e);
         }
     }
+
 }
