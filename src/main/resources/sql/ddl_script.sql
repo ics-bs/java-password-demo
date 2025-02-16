@@ -1,5 +1,4 @@
-CREATE TABLE AppUser
-(
+CREATE TABLE AppUser (
     AppUserID       INTEGER IDENTITY(1,1),
     Username        NVARCHAR(50)    NOT NULL,
     UserPassword    NVARCHAR(MAX)   NOT NULL,

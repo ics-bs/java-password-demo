@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS AppUser;
 
 CREATE TABLE AppUser (
-    AppUserID       INT IDENTITY(1,1),
+    AppUserID       INTEGER IDENTITY(1,1),
     Username        NVARCHAR(50)    NOT NULL,
     PasswordHash    VARBINARY(64)   NOT NULL,
     Salt            NVARCHAR(128)   NOT NULL,
